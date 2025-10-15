@@ -57,7 +57,7 @@ export class ItemCard {
     }
   }
 
-  goToDetail() {
+  public goToDetail(): void {
     this.router.navigate(['/items', this.item.id]);
   }
 

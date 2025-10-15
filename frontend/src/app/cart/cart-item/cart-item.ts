@@ -6,6 +6,7 @@ import { CartItem } from '../../home/item-container/item.interface';
 import { CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { AddToCart, RemoveFromCart } from '../cart.state';
 import { map } from 'rxjs/internal/operators/map';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,9 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class CartItemComponent {
   @Input({ required: true }) item!: CartItem;
-  constructor(private store: Store) { }
+
+  constructor(private store: Store, private router: Router) { }
+
   public quantity$!: Observable<number | undefined>;
 
   ngOnInit() {
@@ -24,7 +27,6 @@ export class CartItemComponent {
       map(fn => fn(this.item.id))
     );
   }
-
 
   public increment() {
     const getQuantityById = this.store.selectSnapshot(CartState.getQuantityById);
@@ -50,6 +52,10 @@ export class CartItemComponent {
 
   public remove() {
     this.store.dispatch(new RemoveFromCart(this.item.id));
+  }
+
+  public goToDetail(): void {
+    this.router.navigate(['/items', this.item.id]);
   }
 
 }
