@@ -18,7 +18,7 @@ import { environment } from '../../../environments/environment';
 })
 export class CartItemComponent {
   @Input({ required: true }) item!: CartItem;
-  @Output() public baseUrl: string = environment.apiUrl;
+  baseUrl: string = environment.apiUrl;
 
   constructor(private store: Store, private router: Router) { }
 

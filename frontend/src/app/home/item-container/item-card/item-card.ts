@@ -24,7 +24,8 @@ export class ItemCard {
     }; */
 
   @Input({ required: true }) item!: Item;
-  @Output() public baseUrl: string = environment.apiUrl;
+  public baseUrl: string = environment.apiUrl;
+
 
   public quantity$!: Observable<number | undefined>;
   constructor(private store: Store, private router: Router) { };
@@ -33,6 +34,7 @@ export class ItemCard {
     this.quantity$ = this.store.select(CartState.getQuantityById).pipe(
       map(fn => fn(this.item.id))
     );
+    console.log(this.baseUrl)
   }
 
 

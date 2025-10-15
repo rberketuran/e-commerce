@@ -1,6 +1,6 @@
 <div class="flex justify-between items-center border border-gray-300 rounded p-[8px] m-4">
     <img (click)="goToDetail()" class="w-20 h-20 object-contain cursor-pointer"
-        [src]="baseUrl + '/images/' + item.image_url" alt="">
+        [src]="baseUrl + 'images/' + item.image_url" alt="">
     <h2 (click)="goToDetail()" class="w-50 text-center hover:underline cursor-pointer">{{item.title}}</h2>
 
     <p class="w-18 text-center">{{item.price | currency}}</p>

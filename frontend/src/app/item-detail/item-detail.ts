@@ -19,7 +19,7 @@ import { environment } from '../../environments/environment';
   styleUrl: './item-detail.css'
 })
 export class ItemDetail {
-  @Output() public baseUrl: string = environment.apiUrl;
+  baseUrl: string = environment.apiUrl;
   item!: Item | undefined;
 
   public quantity$!: Observable<number | undefined>;
