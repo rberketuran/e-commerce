@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Item } from "../item.interface";
 import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngxs/store';
@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-item-card',
@@ -23,7 +24,7 @@ export class ItemCard {
     }; */
 
   @Input({ required: true }) item!: Item;
-
+  @Output() public baseUrl: string = environment.apiUrl;
 
   public quantity$!: Observable<number | undefined>;
   constructor(private store: Store, private router: Router) { };

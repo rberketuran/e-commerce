@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs/internal/Observable';
 import { CartState, IncrementQuantity, DecrementQuantity } from '../cart.state';
@@ -7,6 +7,7 @@ import { CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { AddToCart, RemoveFromCart } from '../cart.state';
 import { map } from 'rxjs/internal/operators/map';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { Router } from '@angular/router';
 })
 export class CartItemComponent {
   @Input({ required: true }) item!: CartItem;
+  @Output() public baseUrl: string = environment.apiUrl;
 
   constructor(private store: Store, private router: Router) { }
 

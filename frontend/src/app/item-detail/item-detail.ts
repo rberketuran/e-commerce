@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 // import { SAMPLE_DATA } from '../item-container/sample-data';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from '../home/item-container/item.interface';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../home/item-container/item.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-item-detail',
@@ -18,6 +19,7 @@ import { ItemService } from '../home/item-container/item.service';
   styleUrl: './item-detail.css'
 })
 export class ItemDetail {
+  @Output() public baseUrl: string = environment.apiUrl;
   item!: Item | undefined;
 
   public quantity$!: Observable<number | undefined>;
