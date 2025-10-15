@@ -1,19 +1,21 @@
-<div class="flex justify-start items-center h-12 bg-gray-100 space-x-2 px-2">
-  <button class="cursor-pointer w-36 py-1 whitespace-nowrap transition-all duration-150" (click)="selectCategory('All')"
-    [ngClass]="{
+<div class="pt-16">
+  <div class="flex justify-start items-center h-12 bg-gray-100 space-x-2 px-2">
+    <button class="cursor-pointer w-36 py-1 whitespace-nowrap transition-all duration-150"
+      (click)="selectCategory('All')" [ngClass]="{
       'font-bold border border-gray-400 rounded-full bg-white shadow-sm': selectedCategory === 'All'
     }">
-    All
-  </button>
+      All
+    </button>
 
-  <button *ngFor="let category of categories"
-    class="cursor-pointer w-36 py-1 whitespace-nowrap transition-all duration-150" (click)="selectCategory(category)"
-    [ngClass]="{
-      'font-bold border border-gray-400 rounded-full bg-white shadow-sm': selectedCategory === category
-    }">
-    {{ category }}
-  </button>
+    <button *ngFor="let category of categories"
+      class="cursor-pointer w-36 py-1 whitespace-nowrap transition-all duration-150" (click)="selectCategory(category)"
+      [ngClass]="{
+    'font-bold border border-gray-400 rounded-full bg-white shadow-sm': selectedCategory === category
+  }">
+      {{ category }}
+    </button>
+  </div>
+
+  <hr />
+  <app-item-container [category]="selectedCategory"></app-item-container>
 </div>
-
-<hr />
-<app-item-container [category]="selectedCategory"></app-item-container>

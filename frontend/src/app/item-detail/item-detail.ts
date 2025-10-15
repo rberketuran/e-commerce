@@ -42,6 +42,7 @@ export class ItemDetail {
     this.itemService.getItemById(id).subscribe({
       next: (data) => {
         this.item = data;
+        console.log(this.item);
       },
       error: (err) => {
         this.errorMessage = err.message; console.error(err);
