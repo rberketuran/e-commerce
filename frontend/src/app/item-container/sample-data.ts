@@ -1,6 +1,6 @@
 import { Item } from "./item.interface";
 
-export const SAMPLE_DATA: Item[] = [
+export const SAMPLE_DATA: any /* Item[] */ = [
     { id: 1, title: 'Sample Item 1', imageUrl: 'https://placehold.co/400?text=Item+1', price: 17.45 },
     { id: 2, title: 'Sample Item 2', imageUrl: 'https://placehold.co/400?text=Item+2', price: 56.23 },
     { id: 3, title: 'Sample Item 3', imageUrl: 'https://placehold.co/400?text=Item+3', price: 42.10 },
