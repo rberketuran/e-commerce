@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import itemRoutes from './routes/item.route.js';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 /* import { setupDatabase } from './db/setup.js';
 
@@ -14,15 +16,20 @@ setupDatabase().then(() => {
 
 dotenv.config();
 
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 const isProd = process.env.NODE_ENV === "production";
-const allowedOrigin = isProd
-    ? ""
-    : "http://localhost:4200";
+const allowedOrigin = isProd ? "" : "http://localhost:4200";
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 // Middleware
+app.use('/images', express.static(path.join(__dirname, './data/images')));
+
 app.use(
     cors({
         origin: allowedOrigin,
