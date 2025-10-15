@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './navbar/navbar';
-import { ItemContainer } from "./item-container/item-container";
+import { ItemContainer } from "./home/item-container/item-container";
 @Component({
   selector: 'app-root',
   standalone: true,

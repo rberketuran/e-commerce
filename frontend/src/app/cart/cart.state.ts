@@ -1,5 +1,5 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store'
-import { Item, CartItem } from '../item-container/item.interface'
+import { Item, CartItem } from '../home/item-container/item.interface'
 
 export interface CartStateModel {
     items: CartItem[];

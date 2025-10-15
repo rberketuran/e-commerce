@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 // import { SAMPLE_DATA } from '../item-container/sample-data';
 import { ActivatedRoute } from '@angular/router';
-import { Item } from '../item-container/item.interface';
+import { Item } from '../home/item-container/item.interface';
 import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { AddToCart, CartState, DecrementQuantity, IncrementQuantity, RemoveFromCart } from '../cart/cart.state';
@@ -9,7 +9,7 @@ import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { CommonModule } from '@angular/common';
-import { ItemService } from '../item-container/item.service';
+import { ItemService } from '../home/item-container/item.service';
 
 @Component({
   selector: 'app-item-detail',

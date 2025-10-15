@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CartItemComponent } from "./cart-item/cart-item";
 import { Select, Store } from '@ngxs/store';
 import { CartState } from './cart.state';
-import { CartItem } from '../item-container/item.interface';
+import { CartItem } from '../home/item-container/item.interface';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';

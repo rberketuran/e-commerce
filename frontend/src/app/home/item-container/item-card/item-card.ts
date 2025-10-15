@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Item } from "../item.interface";
 import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngxs/store';
-import { AddToCart, IncrementQuantity, DecrementQuantity, RemoveFromCart, CartState } from '../../cart/cart.state';
+import { AddToCart, IncrementQuantity, DecrementQuantity, RemoveFromCart, CartState } from '../../../cart/cart.state';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
@@ -23,6 +23,7 @@ export class ItemCard {
     }; */
 
   @Input({ required: true }) item!: Item;
+
 
   public quantity$!: Observable<number | undefined>;
   constructor(private store: Store, private router: Router) { };

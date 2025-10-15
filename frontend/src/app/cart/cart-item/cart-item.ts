@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs/internal/Observable';
 import { CartState, IncrementQuantity, DecrementQuantity } from '../cart.state';
-import { CartItem } from '../../item-container/item.interface';
+import { CartItem } from '../../home/item-container/item.interface';
 import { CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { AddToCart, RemoveFromCart } from '../cart.state';
 import { map } from 'rxjs/internal/operators/map';
