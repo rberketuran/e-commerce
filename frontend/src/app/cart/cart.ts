@@ -22,4 +22,9 @@ export class Cart {
     this.cartItems$ = this.store.select(CartState.getItems);
     console.log(this.cartItems$.subscribe(items => console.log(items)));
   }
+
+  public getTotalAmount(items: CartItem[]): number {
+    return items.reduce((acc, curr) => acc + (curr.price * (curr.quantity || 0)), 0);
+  }
+
 }

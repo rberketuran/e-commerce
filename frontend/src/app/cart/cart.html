@@ -1,20 +1,33 @@
-<div class="w-2/3 m-auto">
-    <ng-container *ngIf="cartItems$ | async as items">
-        <div class="flex justify-between items-center border m-4">
-            <div class="w-20"></div>
-            <h2 class="">Title</h2>
+<div class="pt-16">
+    <div class="w-2/3 m-auto">
+        <ng-container *ngIf="cartItems$ | async as items">
+            <div class="flex justify-between items-center border rounded border-gray-500 m-4 p-2">
+                <div class="w-20 h-5"></div>
+                <h2 class="w-50 text-center">Title</h2>
 
-            <p>Price</p>
+                <p class="w-18 text-center">Price</p>
 
-            <p>Total</p>
+                <p class="w-18 text-center">Total</p>
 
-            <div class="w-[152px]"></div>
-        </div>
-        <app-cart-item *ngFor="let item of items;" [item]="item">
-        </app-cart-item>
+                <div class="w-[152px]"></div>
+            </div>
+            <app-cart-item *ngFor="let item of items;" [item]="item">
+            </app-cart-item>
 
-        <p *ngIf="items.length === 0" class="text-gray-500 text-center mt-4">
-            Your cart is empty.
-        </p>
-    </ng-container>
+            <hr class="border-t border-gray-500 my-4" />
+
+            <div class="flex justify-end m-4 text-lg font-semibold ">
+                <div class="bg-gray-200 p-4 rounded mr-50">
+
+                    <p>Total Amount:
+                        {{ getTotalAmount(items) | currency }}
+                    </p>
+                </div>
+            </div>
+
+            <p *ngIf="items.length === 0" class="text-gray-500 text-center mt-4">
+                Your cart is empty.
+            </p>
+        </ng-container>
+    </div>
 </div>
