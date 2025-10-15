@@ -3,9 +3,9 @@ export interface Item {
     title: string;
     price: number;
     category: string;
-    imageUrl: string;
+    image_url: string;
     description: string;
-    createdAt: string;
+    created_at: string;
 }
 
 export interface CartItem extends Item {

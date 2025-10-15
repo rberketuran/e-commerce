@@ -48,6 +48,11 @@ export class CartState {
         return (id: number) => state.items.find(i => i.id === id)?.quantity ?? 0;
     }
 
+    @Selector()
+    public static getCartCount(state: CartStateModel) {
+        return state.items.length;
+    }
+
     @Action(AddToCart)
     public add({ getState, patchState }: StateContext<CartStateModel>, { payload }: AddToCart) {
         const state = getState();
