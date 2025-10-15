@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postinstall": "ng build --configuration=production",
+    "serve:dist": "serve -s dist/essentials-practice/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
