@@ -2,6 +2,10 @@
     <img class="w-full h-[300px] object-cover rounded-lg mb-4" [src]="item?.imageUrl" alt="">
     <h1 class="text-2xl font-semibold mb-2">{{ item?.title }}</h1>
     <p class="text-gray-600 mb-4">{{ item?.price | currency }}</p>
+    <p class="text-gray-800 mb-6">{{ item?.description }}</p>
+    <div *ngIf="((quantity$ |async) ?? 0) > 0">
+        <p>Total: {{ item!.price * ((quantity$ | async) ?? 0) | currency }}</p>
+    </div>
     <div class="flex items-center space-x-2">
         <!-- Minus button -->
         <button (click)="decrement()" [disabled]="(quantity$ | async) === 0"
