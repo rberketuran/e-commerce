@@ -3,6 +3,15 @@ import cors from 'cors';
 import itemRoutes from './routes/item.route.js';
 import dotenv from 'dotenv';
 
+/* import { setupDatabase } from './db/setup.js';
+
+// Initialize and setup the database
+setupDatabase().then(() => {
+    console.log('Database setup complete.');
+}).catch((error) => {
+    console.error('Database setup failed:', error);
+}); */
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
