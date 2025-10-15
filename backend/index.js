@@ -20,7 +20,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 const isProd = process.env.NODE_ENV === "production";
-const allowedOrigin = isProd ? "" : "http://localhost:4200";
+const allowedOrigin = isProd ? "https://e-commerce-fe-e5sh.onrender.com" : "http://localhost:4200";
 
 
 const __filename = fileURLToPath(import.meta.url);
