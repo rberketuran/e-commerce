@@ -1,0 +1,38 @@
+<div class="max-w-2xl mx-auto p-4">
+    <img class="w-full h-[300px] object-cover rounded-lg mb-4" [src]="item?.imageUrl" alt="">
+    <h1 class="text-2xl font-semibold mb-2">{{ item?.title }}</h1>
+    <p class="text-gray-600 mb-4">{{ item?.price | currency }}</p>
+    <div class="flex items-center space-x-2">
+        <!-- Minus button -->
+        <button (click)="decrement()" [disabled]="(quantity$ | async) === 0"
+            class=" w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer disabled:cursor-default disabled:opacity-50 ">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor"
+                fill="none" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+        </button>
+
+        <!-- Quantity -->
+        <span class="w-8 text-center text-gray-700 font-medium select-none">{{ quantity$ | async }}</span>
+
+        <!-- Plus button -->
+        <button (click)="increment()"
+            class="w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor"
+                fill="none" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+        </button>
+
+        <!-- Remove button -->
+        <button *ngIf="((quantity$ | async) ?? 0) > 0" (click)="remove()"
+            class="w-8 h-8 flex items-center justify-center rounded-md border border-red-300 hover:bg-red-100 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500" viewBox="0 0 24 24"
+                stroke="currentColor" fill="none" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+    </div>
+</div>

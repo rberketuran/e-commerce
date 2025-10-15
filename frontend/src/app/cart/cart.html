@@ -1,0 +1,20 @@
+<div class="w-2/3 m-auto">
+    <ng-container *ngIf="cartItems$ | async as items">
+        <div class="flex justify-between items-center border m-4">
+            <div class="w-20"></div>
+            <h2 class="">Title</h2>
+
+            <p>Price</p>
+
+            <p>Total</p>
+
+            <div class="w-[152px]"></div>
+        </div>
+        <app-cart-item *ngFor="let item of items;" [item]="item">
+        </app-cart-item>
+
+        <p *ngIf="items.length === 0" class="text-gray-500 text-center mt-4">
+            Your cart is empty.
+        </p>
+    </ng-container>
+</div>

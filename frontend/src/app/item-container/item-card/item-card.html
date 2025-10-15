@@ -1,0 +1,37 @@
+<div class="flex flex-col justify-between w-56 h-[346px] border border-gray-300 rounded p-[8px] m-4">
+    <img (click)="goToDetail()" class="cursor-pointer w-full h-[160px] object-cover" [src]="item.imageUrl" alt="">
+    <h2 (click)="goToDetail()" class="cursor-pointer h-[32px]">{{item.title}}</h2>
+    <div class="h-[75px] flex items-end">
+        <p>{{item.price | currency}}</p>
+    </div>
+    <div class="flex justify-end h-[32px]">
+        <div class="flex items-center space-x-2">
+            <!-- Minus button -->
+            <button (click)="decrement()" [disabled]="(quantity$ | async) === 0"
+                class=" w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer disabled:cursor-default disabled:opacity-50 ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor"
+                    fill="none" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+            </button>
+
+            <!-- Quantity -->
+            <span class="w-8 text-center text-gray-700 font-medium select-none">{{ quantity$ | async }}</span>
+
+            <!-- Plus button -->
+            <button (click)="increment()"
+                class="w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke="currentColor"
+                    fill="none" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+
+
+
+</div>
