@@ -1,24 +1,23 @@
 import { Component, Output } from '@angular/core';
-// import { SAMPLE_DATA } from '../item-container/sample-data';
 import { ActivatedRoute } from '@angular/router';
-import { Item } from '../home/item-container/item.interface';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, AsyncPipe } from '@angular/common';
 import { Store } from '@ngxs/store';
-import { AddToCart, CartState, DecrementQuantity, IncrementQuantity, RemoveFromCart } from '../cart/cart.state';
-import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
-import { CommonModule } from '@angular/common';
-import { ItemService } from '../home/item-container/item.service';
+import { CartState } from '../store/states/cart.state';
+import { AddToCart, IncrementQuantity, DecrementQuantity, RemoveFromCart } from '../store/actions/cart.actions';
+import { ItemService } from '../../libs/services/item.service';
 import { environment } from '../../environments/environment';
+import { Item } from '../../libs/interfaces/item.interface';
+// import { SAMPLE_DATA } from '../item-container/sample-data';
 
 @Component({
   selector: 'app-item-detail',
   imports: [CurrencyPipe, AsyncPipe, CommonModule],
-  templateUrl: './item-detail.html',
-  styleUrl: './item-detail.css'
+  templateUrl: './item-detail.component.html',
+  styleUrls: ['./item-detail.component.css']
 })
-export class ItemDetail {
+export class ItemDetailComponent {
   baseUrl: string = environment.apiUrl;
   item!: Item | undefined;
 
@@ -44,7 +43,6 @@ export class ItemDetail {
     this.itemService.getItemById(id).subscribe({
       next: (data) => {
         this.item = data;
-        console.log(this.item);
       },
       error: (err) => {
         this.errorMessage = err.message; console.error(err);
@@ -62,7 +60,6 @@ export class ItemDetail {
     } else {
       this.store.dispatch(new IncrementQuantity(this.item.id));
     }
-    console.log(current);
   }
 
   public decrement() {

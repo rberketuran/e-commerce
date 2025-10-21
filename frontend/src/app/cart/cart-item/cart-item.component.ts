@@ -1,42 +1,34 @@
 import { Component, Input, Output } from '@angular/core';
-import { Item } from "../item.interface";
-import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngxs/store';
-import { AddToCart, IncrementQuantity, DecrementQuantity, RemoveFromCart, CartState } from '../../../cart/cart.state';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
-import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs/internal/Observable';
+import { CartState } from '../../store/states/cart.state';
+import { CartItem } from '../../../libs/interfaces/item.interface';
+import { CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { AddToCart, IncrementQuantity, DecrementQuantity, RemoveFromCart } from '../../store/actions/cart.actions';
+import { map } from 'rxjs/internal/operators/map';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
-  selector: 'app-item-card',
-  imports: [CommonModule, CurrencyPipe, AsyncPipe],
-  templateUrl: './item-card.html',
-  styleUrl: './item-card.css'
+  selector: 'app-cart-item',
+  imports: [CommonModule],
+  templateUrl: './cart-item.component.html',
+  styleUrls: ['./cart-item.component.css']
 })
-export class ItemCard {
-  /*   item: Item = {
-      title: 'Sample Item',
-      imageUrl: 'https://placehold.co/400',
-      price: 29.99
-    }; */
+export class CartItemComponent {
+  @Input({ required: true }) item!: CartItem;
+  baseUrl: string = environment.apiUrl;
 
-  @Input({ required: true }) item!: Item;
-  public baseUrl: string = environment.apiUrl;
-
+  constructor(private store: Store, private router: Router) { }
 
   public quantity$!: Observable<number | undefined>;
-  constructor(private store: Store, private router: Router) { };
 
   ngOnInit() {
     this.quantity$ = this.store.select(CartState.getQuantityById).pipe(
       map(fn => fn(this.item.id))
     );
-    console.log(this.baseUrl)
   }
-
 
   public increment() {
     const getQuantityById = this.store.selectSnapshot(CartState.getQuantityById);
@@ -46,7 +38,6 @@ export class ItemCard {
     } else {
       this.store.dispatch(new IncrementQuantity(this.item.id));
     }
-    console.log(current);
   }
 
   public decrement() {
@@ -60,9 +51,12 @@ export class ItemCard {
     }
   }
 
+  public remove() {
+    this.store.dispatch(new RemoveFromCart(this.item.id));
+  }
+
   public goToDetail(): void {
     this.router.navigate(['/items', this.item.id]);
   }
-
 
 }

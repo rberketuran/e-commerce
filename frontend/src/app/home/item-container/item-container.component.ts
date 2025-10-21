@@ -1,18 +1,18 @@
 import { Component, Input } from '@angular/core';
-import { ItemCard } from "./item-card/item-card";
-import { Item } from "./item.interface";
+import { Item } from "../../../libs/interfaces/item.interface";
 import { SAMPLE_DATA } from "./sample-data";
 import { CommonModule } from '@angular/common';
-import { ItemService } from './item.service';
+import { ItemService } from '../../../libs/services/item.service';
 import { CategoryFilterPipe } from './category-filter.pipe';
+import { ItemCardComponent } from './item-card/item-card.component';
 
 @Component({
   selector: 'app-item-container',
-  imports: [ItemCard, CommonModule, CategoryFilterPipe],
-  templateUrl: './item-container.html',
-  styleUrl: './item-container.css'
+  imports: [ItemCardComponent, CommonModule, CategoryFilterPipe],
+  templateUrl: './item-container.component.html',
+  styleUrls: ['./item-container.component.css']
 })
-export class ItemContainer {
+export class ItemContainerComponent {
   //items: Item[] = SAMPLE_DATA;
 
   @Input({ required: true }) public category: string = 'All';

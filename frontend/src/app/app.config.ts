@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { provideStore } from '@ngxs/store';
 import { StorageOption, withNgxsStoragePlugin } from '@ngxs/storage-plugin';
 import { routes } from './app.routes';
-import { CartState } from './cart/cart.state';
+import { CartState } from './store/states/cart.state';
 import { provideHttpClient } from '@angular/common/http';
 
 

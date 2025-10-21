@@ -6,6 +6,7 @@ export interface Item {
     image_url: string;
     description: string;
     created_at: string;
+
 }
 
 export interface CartItem extends Item {

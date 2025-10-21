@@ -1,4 +1,4 @@
-import { Item } from "./item.interface";
+import { Item } from "../../../libs/interfaces/item.interface";
 
 export const SAMPLE_DATA: any /* Item[] */ = [
     { id: 1, title: 'Sample Item 1', imageUrl: 'https://placehold.co/400?text=Item+1', price: 17.45 },

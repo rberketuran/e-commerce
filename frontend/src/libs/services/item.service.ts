@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, throwError } from "rxjs";
-import { Item } from "./item.interface";
-import { environment } from '../../../environments/environment';
+import { Item } from "../interfaces/item.interface";
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ItemService {

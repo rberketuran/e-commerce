@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { ItemContainer } from './item-container/item-container';
+import { ItemContainerComponent } from './item-container/item-container.component';
 import { CATEGORIES } from '../shared/categories';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [ItemContainer, CommonModule],
-  templateUrl: './home.html',
-  styleUrl: './home.css'
+  imports: [ItemContainerComponent, CommonModule],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class Home {
+export class HomeComponent {
   public categories: string[] = CATEGORIES;
   public selectedCategory: string = 'All';
 
